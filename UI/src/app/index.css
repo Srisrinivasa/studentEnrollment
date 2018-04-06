@@ -1,0 +1,15 @@
+.no-margin {
+    margin: 0px;
+}
+.no-padding {
+    padding: 0px;
+}
+.w100 {
+    width: 100%;
+}
+.h100 {
+    height: 100%;
+}
+.align-center {
+    text-align: center;
+}
