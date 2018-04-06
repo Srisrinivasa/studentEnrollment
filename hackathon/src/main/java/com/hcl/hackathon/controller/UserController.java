@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hcl.hackathon.dao.UserDao;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
+import com.hcl.hackathon.response.GenericResponse;
 
 @RestController
 @RequestMapping(value="/user")
@@ -20,12 +21,9 @@ public class UserController {
 	private UserDao userDao;
 	
 	@PostMapping()
-	public String login(@RequestBody Login login) {
-		if (login.getUserId() != null && login.getUserId().equals("nitin") &&
-				login.getPassword() != null && login.getPassword().equals("nitin123")) {
-			return "success";
-		}
-		return "fail";
+	public GenericResponse login(@RequestBody Login login) {
+		String role = userDao.login(login);
+		return new GenericResponse(role != null ? "User Login Successful" : "User Login Failed", role);
 	}
 
 	@PostMapping("/register")
