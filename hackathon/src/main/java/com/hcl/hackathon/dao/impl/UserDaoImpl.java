@@ -22,10 +22,17 @@ import com.hcl.hackathon.domain.UserRowMapper;
 @Component
 public class UserDaoImpl implements UserDao{
 	
+	/**
+	 * JdbcTemplate used to execute database queries
+	 */
 	private final JdbcTemplate jdbcTemplate;  
-	  
+	
+	/**
+	 * 
+	 * @param jdbcTemplate
+	 */
 	@Autowired
-	public UserDaoImpl( JdbcTemplate jdbcTemplate) {
+	public UserDaoImpl(final JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate=jdbcTemplate;
 	}
 	
@@ -34,14 +41,10 @@ public class UserDaoImpl implements UserDao{
 	 * @param login
 	 * @return
 	 */
-	public String login(Login login){  
+	public String login(final Login login){  
 		String query="select u.role from t_user u where u.userId = ? and u.password = ?";
-	    List<String> roles = jdbcTemplate.queryForList(query, new Object[] {login.getUserId(), login.getPassword()},String.class); 
-	    if (roles.isEmpty()) {
-	        return null;
-	    } else {
-	        return roles.get(0);
-	    }
+	    final List<String> roles = jdbcTemplate.queryForList(query, new Object[] {login.getUserId(), login.getPassword()},String.class); 
+	    return roles.isEmpty() ? "" : roles.get(0);
 	}
 
 	/**
@@ -49,16 +52,14 @@ public class UserDaoImpl implements UserDao{
 	 * @param user
 	 * @throws ParseException
 	 */
-	public void saveUserDetails(UserDetails user) throws ParseException{  
+	public void saveUserDetails(final UserDetails user) throws ParseException{  
 		final java.util.Date dateStr = new SimpleDateFormat("yyyy-MM-dd").parse(user.getDob());
 		final java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
 	    final String userDetailsData="insert into t_userdetails values(null,'"+user.getFirstName()+"','"+user.getMiddleName()+"','"+user.getLastName()+"','"+
 	     user.getAddressLine1()+"','"+ user.getAddressLine2()+"','"+ user.getCity()+"','" +user.getState()+"','" +user.getPincode()+
 	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +user.getKYCStatus()+"');";
 	    jdbcTemplate.update(userDetailsData);  //inserting registration data in user details
-	    System.out.println("userdetails===>"+userDetailsData);//TODO to be removed
 	    final String loginDetailsData="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
-	    System.out.println("logindetailsdata===>"+loginDetailsData);//TODO to be removed
 	    jdbcTemplate.update(loginDetailsData);  //inserting login data
 	}  
 	
@@ -67,7 +68,7 @@ public class UserDaoImpl implements UserDao{
 	 * @return List<UserDetails>
 	 */
 	public List<UserDetails> findPendingKycUsers(){  
-		String query="select * from t_userdetails ud where ud.KYCStatus = ?";
+		String query="select * from t_userdetails ud where ud.kycStatus = ?";
 	    return jdbcTemplate.query(query, new Object[] {Constants.PENDING}, new UserRowMapper()); 
 	}
 	
@@ -76,9 +77,9 @@ public class UserDaoImpl implements UserDao{
 	 * @param kycStatus
 	 * @param id
 	 */
-	public void updateKycStatus(String kycStatus, Long id){  
-		String query="update t_userdetails ud set ud.KYCStatus = ? where ud.id = ?";
-	    jdbcTemplate.update(query, new Object[] {kycStatus, id}); 
+	public void updateKycStatus(final String kycStatus, final Long userId){  
+		String query="update t_userdetails ud set ud.kycStatus = ? where ud.id = ?";
+	    jdbcTemplate.update(query, new Object[] {kycStatus, userId}); 
 	}
 	
 	/**
@@ -86,9 +87,9 @@ public class UserDaoImpl implements UserDao{
 	 * @param emailId
 	 * @return UserDetails
 	 */
-	public UserDetails findByUserId(String emailId){
-		String query="select * from t_userdetails ud where ud.emailId = ?";
-		List<UserDetails> userDetails = jdbcTemplate.query(query, new Object[] {emailId}, new UserRowMapper()); 
+	public UserDetails findByUserId(final String emailId){
+		final String query="select * from t_userdetails ud where ud.emailId = ?";
+		final List<UserDetails> userDetails = jdbcTemplate.query(query, new Object[] {emailId}, new UserRowMapper()); 
 		if(userDetails!=null && !userDetails.isEmpty()){
 			 return userDetails.get(0);
 		}else{

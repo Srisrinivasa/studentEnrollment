@@ -13,9 +13,37 @@ import com.hcl.hackathon.domain.UserDetails;
 
 public interface UserDao {
 
-	public String login(Login login);
-	public void saveUserDetails(UserDetails user) throws ParseException;
-	public List<UserDetails> findPendingKycUsers();
-	public void updateKycStatus(String kycStatus, Long id);
-	public UserDetails findByUserId(String emailId);
+	/**
+	 * 
+	 * @param login
+	 * @return
+	 */
+	String login(Login login);
+	
+	/**
+	 * 
+	 * @param user
+	 * @throws ParseException
+	 */
+	void saveUserDetails(UserDetails user) throws ParseException;
+	
+	/**
+	 * 
+	 * @return
+	 */
+	List<UserDetails> findPendingKycUsers();
+	
+	/**
+	 * 
+	 * @param kycStatus
+	 * @param userId
+	 */
+	void updateKycStatus(String kycStatus, Long userId);
+	
+	/**
+	 * 
+	 * @param emailId
+	 * @return
+	 */
+	UserDetails findByUserId(String emailId);
 }
