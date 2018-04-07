@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,16 +49,29 @@ public class UserController {
 	/**
 	 * Method is used to
 	 * @param user
-	 * @return ResponseEntity.ok("User Registered successfully");
+	 * @return ResponseEntity
 	 * @throws ParseException
 	 */
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser(@RequestBody UserDetails user) throws ParseException {
-		System.out.println(user.getFirstName());
-		userDao.saveUserDetails(user);
-		return ResponseEntity.ok("User Registered successfully");
+		return isUserAlreadyExists(user.getEmailId())?ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists"):saveUserDetails(user);
 	}
 	
+	private ResponseEntity<?> saveUserDetails(UserDetails user) {
+		ResponseEntity<?> response =null;
+		try {
+			userDao.saveUserDetails(user);
+			response = ResponseEntity.ok("User Registered Successfully");
+		} catch (ParseException e) {
+			response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Date parsing failed: "+e.toString());
+		}
+		return response;
+	}
+	
+	private boolean isUserAlreadyExists(String emailId){
+		return (userDao.findByUserId(emailId)==null)? false:true;
+	}
+
 	@GetMapping("test")
 	public String test() {
 		return "success";

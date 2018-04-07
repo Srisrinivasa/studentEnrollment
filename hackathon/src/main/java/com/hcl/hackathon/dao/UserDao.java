@@ -69,4 +69,19 @@ public class UserDao {
 	    return jdbcTemplate.query(query, new Object[] {"PENDING"}, new UserRowMapper()); 
 	}
 	
+	/**
+	 * Method to find User Details
+	 * @param emailId
+	 * @return UserDetails
+	 */
+	public UserDetails findByUserId(String emailId){
+		String query="select * from t_userdetails ud where ud.emailId = ?";
+		List<UserDetails> userDetails = jdbcTemplate.query(query, new Object[] {emailId}, new UserRowMapper()); 
+		if(userDetails!=null){
+			 return userDetails.get(0);
+		}else{
+			return null;
+		}
+	}
+	
 }
