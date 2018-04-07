@@ -92,8 +92,4 @@ public class UserController {
 		return (userDao.findByUserId(emailId)==null)? false:true;
 	}
 
-	@GetMapping("test")
-	public String test() {
-		return "success";
-	}
 }

@@ -48,8 +48,8 @@ public class LoanController {
 	 * @param loanDetails
 	 * @return
 	 */
-   @GetMapping("/details")
-   public ResponseEntity<?> getLoanDetails(@RequestHeader(value="userId") String userId) {
+    @GetMapping("/details")
+    public ResponseEntity<?> getLoanDetails(@RequestHeader(value="userId") String userId) {
 		return ResponseEntity.ok(loanDao.findLoanDetailsByUserId(userId));//getting all loan details of user
 	}
 
