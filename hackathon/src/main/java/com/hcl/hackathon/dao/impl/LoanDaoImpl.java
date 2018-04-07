@@ -50,8 +50,16 @@ public class LoanDaoImpl implements LoanDao{
 	 */
 	@Override
 	public List<LoanDetails> findLoanDetailsByUserId(final String userId) {
-		String query="select * from t_loan_details ud where ud.user_id = ?";
-	    return jdbcTemplate.query(query, new Object[] {userId}, new LoanRowMapper()); 
+		String query= "";
+		String parameter = "";
+		if (userId != null && !userId.isEmpty()) {
+			query="select * from t_loan_details ud where ud.user_id = ?";
+			parameter = userId;
+		} else {
+			query="select * from t_loan_details ud where ud.loan_status = ?";
+			parameter = Constants.PENDING;
+		}
+	    return jdbcTemplate.query(query, new Object[] {parameter}, new LoanRowMapper()); 
 	}
 
 	/**
