@@ -1,7 +1,10 @@
 package com.hcl.hackathon.controller;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +15,7 @@ import com.hcl.hackathon.dao.UserDao;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value="/user")
 public class UserController {
@@ -29,7 +33,7 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<?> registerUser(@RequestBody UserDetails user) {
+	public ResponseEntity<?> registerUser(@RequestBody UserDetails user) throws ParseException {
 		System.out.println(user.getFirstName());
 		userDao.saveUserDetails(user);
 		return ResponseEntity.ok("User Registered successfully");
