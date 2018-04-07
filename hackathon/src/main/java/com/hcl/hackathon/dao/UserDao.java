@@ -55,10 +55,10 @@ public class UserDao {
 	     user.getAddressLine1()+"','"+ user.getAddressLine2()+"','"+ user.getCity()+"','" +user.getState()+"','" +user.getPincode()+
 	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +user.getKYCStatus()+"');";
 	    jdbcTemplate.update(userDetailsData);  //inserting registration data in user details
-	  
-	    String query="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
-	    System.out.println("===>"+query);//TODO to be removed
-	    jdbcTemplate.update(userDetailsData);  //inserting login data
+	    System.out.println("userdetails===>"+userDetailsData);//TODO to be removed
+	    String loginDetailsData="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
+	    System.out.println("logindetailsdata===>"+loginDetailsData);//TODO to be removed
+	    jdbcTemplate.update(loginDetailsData);  //inserting login data
 	}  
 	
 	
