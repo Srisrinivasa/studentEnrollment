@@ -25,18 +25,32 @@ import com.hcl.hackathon.domain.LoanDetails;
 @RequestMapping(value="/loan")
 public class LoanController {
 	
-	@Autowired
-	private LoanDao loanDao;
+	private final LoanDao loanDao;
 	
+	@Autowired
+	public LoanController(LoanDao loanDao) {
+		this.loanDao=loanDao;
+	}
+	
+	/**
+	 * Method to capture Loan details
+	 * @param loanDetails
+	 * @return
+	 */
 	@PostMapping("/captureDetails")
 	public ResponseEntity<?> captureLoanDetails(@RequestBody LoanDetails loanDetails) {
-		loanDao.saveLoanDetails(loanDetails);
+		loanDao.saveLoanDetails(loanDetails);//inserting loan details for a user
 		return ResponseEntity.status(HttpStatus.CREATED).body("Loan application submitted !");
 	}
 	
+	/**
+	 * Method to get Loan details for user
+	 * @param loanDetails
+	 * @return
+	 */
    @GetMapping("/details")
    public ResponseEntity<?> getLoanDetails(@RequestHeader(value="userId") String userId) {
-		return ResponseEntity.ok(loanDao.findLoanDetailsByUserId(userId));
+		return ResponseEntity.ok(loanDao.findLoanDetailsByUserId(userId));//getting all loan details of user
 	}
 
 }

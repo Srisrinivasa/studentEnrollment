@@ -28,12 +28,13 @@ import com.hcl.hackathon.response.GenericResponse;
 @RequestMapping(value="/user")
 public class UserController {
 	
-	/**
-	 * UserDao service for database activity
-	 */
+	//UserDao service for database activity
+	private final UserDao userDao;
+
 	@Autowired
-	private UserDao userDao;
-	
+	public UserController(UserDao userDao) {
+		this.userDao=userDao;
+	}
 	/**
 	 * Method is used to check login credentials 
 	 * @param Login(userId, password) 
