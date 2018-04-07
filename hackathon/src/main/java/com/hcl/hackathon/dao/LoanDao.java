@@ -1,5 +1,7 @@
 package com.hcl.hackathon.dao;
 
+import java.util.List;
+
 import com.hcl.hackathon.domain.LoanDetails;
 
 /**
@@ -9,4 +11,5 @@ import com.hcl.hackathon.domain.LoanDetails;
 public interface LoanDao {
 	
 	public void saveLoanDetails(LoanDetails loanDetails);
+	public List<LoanDetails> findLoanDetailsByUserId(String userId);
 }
