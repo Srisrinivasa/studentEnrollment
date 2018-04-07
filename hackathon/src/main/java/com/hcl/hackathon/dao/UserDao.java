@@ -1,12 +1,9 @@
 package com.hcl.hackathon.dao;
 
-<<<<<<< HEAD
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-=======
 import java.util.List;
->>>>>>> branch 'master' of https://github.com/Srisrinivasa/team3.git
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
