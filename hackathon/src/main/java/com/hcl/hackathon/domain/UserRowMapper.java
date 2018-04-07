@@ -33,7 +33,7 @@ public class UserRowMapper implements RowMapper<UserDetails> {
 		user.setState(result.getString("state"));
 		user.setPincode(result.getString("pincode"));
 		user.setDob(result.getString("dob"));
-		user.setKYCStatus(result.getString("KYCStatus"));
+		user.setKycStatus(result.getString("kycStatus"));
 		
 		return user;
 	}

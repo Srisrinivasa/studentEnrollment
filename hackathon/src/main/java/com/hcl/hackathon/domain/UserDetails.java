@@ -21,7 +21,7 @@ public class UserDetails {
     private String state;
     private String pincode;
     private String gender;
-    private String KYCStatus;
+    private String kycStatus;
     private String dob;
     private String password;
 	
@@ -107,11 +107,11 @@ public class UserDetails {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getKYCStatus() {
-		return KYCStatus;
+	public String getKycStatus() {
+		return kycStatus;
 	}
-	public void setKYCStatus(String kYCStatus) {
-		KYCStatus = kYCStatus;
+	public void setKycStatus(String kycStatus) {
+		this.kycStatus = kycStatus;
 	}
 	public String getDob() {
 		return dob;
