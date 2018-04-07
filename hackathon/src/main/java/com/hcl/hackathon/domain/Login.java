@@ -1,4 +1,4 @@
-package com.hcl.hackathon.model;
+package com.hcl.hackathon.domain;
 
 public class Login {
 	private String userId;
