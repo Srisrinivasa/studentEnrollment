@@ -5,26 +5,35 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+/**
+ * Store user related details
+ * @author nitin
+ *
+ */
 public class UserRowMapper implements RowMapper<UserDetails> {
 
+	/**
+	 * @param ResultSet
+	 * @param int
+	 */
 	@Override
-	public UserDetails mapRow(ResultSet rs, int arg1) throws SQLException {
+	public UserDetails mapRow(final ResultSet result, final int arg1) throws SQLException {
 		
-		UserDetails user = new UserDetails();
-		user.setId(rs.getLong("id"));
-		user.setFirstName(rs.getString("firstName"));
-		user.setMiddleName(rs.getString("middleName"));
-		user.setFirstName(rs.getString("lastName"));
-		user.setGender(rs.getString("gender"));
-		user.setEmailId(rs.getString("emailId"));
-		user.setContactNo(rs.getString("contactNo"));
-		user.setAddressLine1(rs.getString("addressLine1"));
-		user.setAddressLine2(rs.getString("addressLine2"));
-		user.setCity(rs.getString("city"));
-		user.setState(rs.getString("state"));
-		user.setPincode(rs.getString("pincode"));
-		user.setDob(rs.getString("dob"));
-		user.setKYCStatus(rs.getString("KYCStatus"));
+		final UserDetails user = new UserDetails();
+		user.setId(result.getLong("id"));
+		user.setFirstName(result.getString("firstName"));
+		user.setMiddleName(result.getString("middleName"));
+		user.setFirstName(result.getString("lastName"));
+		user.setGender(result.getString("gender"));
+		user.setEmailId(result.getString("emailId"));
+		user.setContactNo(result.getString("contactNo"));
+		user.setAddressLine1(result.getString("addressLine1"));
+		user.setAddressLine2(result.getString("addressLine2"));
+		user.setCity(result.getString("city"));
+		user.setState(result.getString("state"));
+		user.setPincode(result.getString("pincode"));
+		user.setDob(result.getString("dob"));
+		user.setKYCStatus(result.getString("KYCStatus"));
 		
 		return user;
 	}

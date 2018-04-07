@@ -6,26 +6,57 @@ package com.hcl.hackathon.response;
  *
  */
 public class GenericResponse {
+	
+	/**
+	 * response message
+	 */
 	private String message;
+	
+	/**
+	 * user role
+	 */
 	private String role;
 	
-	public GenericResponse(String message, String role) {
+	/**
+	 * 
+	 * @param message
+	 * @param role
+	 */
+	public GenericResponse(final String message, final String role) {
 		this.message = message;
 		this.role = role;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getMessage() {
 		return message;
 	}
-	public void setMessage(String message) {
+	
+	/**
+	 * 
+	 * @param message
+	 */
+	public void setMessage(final String message) {
 		this.message = message;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	
+	/**
+	 * 
+	 * @param role
+	 */
+	public void setRole(final String role) {
 		this.role = role;
 	}
-	
 	
 }

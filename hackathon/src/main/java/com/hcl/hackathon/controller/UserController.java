@@ -28,6 +28,9 @@ import com.hcl.hackathon.response.GenericResponse;
 @RequestMapping(value="/user")
 public class UserController {
 	
+	/**
+	 * UserDao service for database activity
+	 */
 	@Autowired
 	private UserDao userDao;
 	
@@ -57,7 +60,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping("/updateKycStatus")
-	public ResponseEntity<String> updateKYCStatus(@RequestBody UserDetails userDetails) {
+	public ResponseEntity<String> updateKYCStatus(final @RequestBody UserDetails userDetails) {
 		userDao.updateKycStatus(userDetails.getKYCStatus(), userDetails.getId());
 		return ResponseEntity.ok("KYC status updated successfully");
 	}
@@ -69,11 +72,11 @@ public class UserController {
 	 * @throws ParseException
 	 */
 	@PostMapping("/register")
-	public ResponseEntity<?> registerUser(@RequestBody UserDetails user) throws ParseException {
+	public ResponseEntity<?> registerUser(final @RequestBody UserDetails user) throws ParseException {
 		return isUserAlreadyExists(user.getEmailId())?ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists"):saveUserDetails(user);
 	}
 	
-	private ResponseEntity<?> saveUserDetails(UserDetails user) {
+	private ResponseEntity<?> saveUserDetails(final UserDetails user) {
 		ResponseEntity<?> response =null;
 		try {
 			userDao.saveUserDetails(user);
@@ -84,7 +87,7 @@ public class UserController {
 		return response;
 	}
 	
-	private boolean isUserAlreadyExists(String emailId){
+	private boolean isUserAlreadyExists(final String emailId){
 		return (userDao.findByUserId(emailId)==null)? false:true;
 	}
 
