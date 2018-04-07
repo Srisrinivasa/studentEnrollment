@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
+import com.hcl.hackathon.domain.UserRowMapper;
 
 /**
  * Dao class to perform Dao operations
@@ -33,8 +34,7 @@ public class UserDao {
 	 */
 	public String login(Login login){  
 		String query="select u.role from t_user u where u.userId = ? and u.password = ?";
-	    //return jdbcTemplate.queryForObject(query, new Object[] {login.getUserId(), login.getPassword()}, String.class);
-		List<String> roles = jdbcTemplate.queryForList(query, new Object[] {login.getUserId(), login.getPassword()},String.class); 
+	    List<String> roles = jdbcTemplate.queryForList(query, new Object[] {login.getUserId(), login.getPassword()},String.class); 
 	    if (roles.isEmpty()) {
 	        return null;
 	    } else {
@@ -60,6 +60,13 @@ public class UserDao {
 	    jdbcTemplate.update(loginDetailsData);  //inserting login data
 	}  
 	
-	
+	/**
+	 * Method is used to get all pending kyc user details
+	 * @return List<UserDetails>
+	 */
+	public List<UserDetails> findPendingKycUsers(){  
+		String query="select * from t_userdetails ud where ud.KYCStatus = ?";
+	    return jdbcTemplate.query(query, new Object[] {"PENDING"}, new UserRowMapper()); 
+	}
 	
 }
