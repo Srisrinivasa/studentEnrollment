@@ -20,7 +20,17 @@ public class LoanDetails {
 	private String loanStatus;
 	private Date loanApplyDate;
 	private String emi;
+	private String type;
 	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getEmi() {
 		return emi;
 	}
