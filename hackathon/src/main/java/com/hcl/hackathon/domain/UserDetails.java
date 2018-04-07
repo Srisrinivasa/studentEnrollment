@@ -9,21 +9,21 @@ package com.hcl.hackathon.domain;
 
 public class UserDetails {
 
-	Long id;
-	String firstName;
-	String middleName;
-	String lastName;
-	String emailId;
-	String contactNo;
-	String addressLine1;
-	String addressLine2;
-	String city;
-	String state;
-	String pincode;
-	String gender;
-	String KYCStatus;
-	String dob;
-	String password;
+    private Long id;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String emailId;
+    private String contactNo;
+    private String addressLine1;
+    private String addressLine2;
+    private String city;
+    private String state;
+    private String pincode;
+    private String gender;
+    private String KYCStatus;
+    private String dob;
+    private String password;
 	
 	public String getPassword() {
 		return password;

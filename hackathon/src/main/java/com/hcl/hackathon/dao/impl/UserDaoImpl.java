@@ -1,4 +1,4 @@
-package com.hcl.hackathon.dao;
+package com.hcl.hackathon.dao.impl;
 
 
 import java.text.ParseException;
@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.hcl.hackathon.constants.Constants;
+import com.hcl.hackathon.dao.UserDao;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 import com.hcl.hackathon.domain.UserRowMapper;

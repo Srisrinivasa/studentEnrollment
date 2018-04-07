@@ -11,16 +11,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class LoanDetails {
 
-	Long id;
-	String userId;
-	String interestRate;
-	String tenure;
-	String amount;
-	String university_name;
-	String loan_status;
-	
-	Date loan_apply_date;
-	String emi;
+	private Long id;
+	private String userId;
+	private String interestRate;
+	private String tenure;
+	private String amount;
+	private String universityName;
+	private String loanStatus;
+	private Date loanApplyDate;
+	private String emi;
 	
 	public String getEmi() {
 		return emi;
@@ -63,27 +62,30 @@ public class LoanDetails {
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-	public String getUniversity_name() {
-		return university_name;
+
+	public String getUniversityName() {
+		return universityName;
 	}
-	public void setUniversity_name(String university_name) {
-		this.university_name = university_name;
+
+	public void setUniversityName(String universityName) {
+		this.universityName = universityName;
 	}
-	public String getLoan_status() {
-		return loan_status;
+
+	public String getLoanStatus() {
+		return loanStatus;
 	}
-	
-	public void setLoan_status(String loan_status) {
-		this.loan_status = loan_status;
+
+	public void setLoanStatus(String loanStatus) {
+		this.loanStatus = loanStatus;
 	}
-	
-	public Date getLoan_apply_date() {
-		return loan_apply_date;
+
+	public Date getLoanApplyDate() {
+		return loanApplyDate;
 	}
-	
+
 	@JsonIgnore
-	public void setLoan_apply_date(Date loan_apply_date) {
-		this.loan_apply_date = loan_apply_date;
+	public void setLoanApplyDate(Date loanApplyDate) {
+		this.loanApplyDate = loanApplyDate;
 	}
-	
+
 }

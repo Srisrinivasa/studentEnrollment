@@ -7,10 +7,10 @@ import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 
 /**
- * apis for user related 
+ * Dao interface for User detail operations
  * @author admin
- *
  */
+
 public interface UserDao {
 
 	public String login(Login login);
