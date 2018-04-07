@@ -77,7 +77,7 @@ public class UserController {
 		ResponseEntity<?> response =null;
 		try {
 			userDao.saveUserDetails(user);
-			response = ResponseEntity.ok("User Registered Successfully");
+			response = ResponseEntity.status(HttpStatus.CREATED).body("User Registered Successfully");
 		} catch (ParseException e) {
 			response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Date parsing failed: "+e.toString());
 		}

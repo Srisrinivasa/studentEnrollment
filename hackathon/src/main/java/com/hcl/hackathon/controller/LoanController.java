@@ -21,6 +21,8 @@ public class LoanController {
 	
 	@PostMapping("/captureDetails")
 	public ResponseEntity<?> captureLoanDetails(@RequestBody LoanDetails loanDetails) {
+		
+		
 		return ResponseEntity.ok("Loan application submitted");
 	}
 

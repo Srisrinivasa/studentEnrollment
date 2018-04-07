@@ -20,7 +20,16 @@ public class LoanDetails {
 	String loan_status;
 	
 	Date loan_apply_date;
+	String emi;
 	
+	public String getEmi() {
+		return emi;
+	}
+
+	public void setEmi(String emi) {
+		this.emi = emi;
+	}
+
 	public Long getId() {
 		return id;
 	}
