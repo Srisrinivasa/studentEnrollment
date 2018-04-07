@@ -52,7 +52,7 @@ public class UserController {
 	 * @param userDetails
 	 * @return
 	 */
-	@PostMapping("/updateKycUsers")
+	@PostMapping("/updateKycStatus")
 	public ResponseEntity<String> updateKYCStatus(@RequestBody UserDetails userDetails) {
 		userDao.updateKycStatus(userDetails.getKYCStatus(), userDetails.getId());
 		return ResponseEntity.ok("KYC status updated successfully");
