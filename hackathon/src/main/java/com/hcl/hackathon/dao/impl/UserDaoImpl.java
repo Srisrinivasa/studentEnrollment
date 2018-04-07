@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDao{
 	 * @return List<UserDetails>
 	 */
 	public List<UserDetails> findPendingKycUsers(){  
-		String query="select * from t_userdetails ud where ud.kycStatus = ?";
+		String query="select * from t_userdetails ud where ud.KYCStatus = ?";
 	    return jdbcTemplate.query(query, new Object[] {Constants.PENDING}, new UserRowMapper()); 
 	}
 	
@@ -78,7 +78,7 @@ public class UserDaoImpl implements UserDao{
 	 * @param id
 	 */
 	public void updateKycStatus(final String kycStatus, final Long userId){  
-		String query="update t_userdetails ud set ud.kycStatus = ? where ud.id = ?";
+		String query="update t_userdetails ud set ud.KYCStatus = ? where ud.id = ?";
 	    jdbcTemplate.update(query, new Object[] {kycStatus, userId}); 
 	}
 	

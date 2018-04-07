@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hcl.hackathon.dao.LoanDao;
 import com.hcl.hackathon.domain.LoanDetails;
 
-
 /**
  * REST Controller for Loan REST APIs
  * @author admin
@@ -48,9 +47,19 @@ public class LoanController {
 	 * @param loanDetails
 	 * @return
 	 */
-   @GetMapping("/details")
-   public ResponseEntity<?> getLoanDetails(@RequestHeader(value="userId") String userId) {
+	@GetMapping("/details")
+	public ResponseEntity<?> getLoanDetails(@RequestHeader(value="userId") String userId) {
 		return ResponseEntity.ok(loanDao.findLoanDetailsByUserId(userId));//getting all loan details of user
 	}
 
+	/**
+	 * 
+	 * @param userDetails
+	 * @return
+	 */
+	@PostMapping("/updateLoanStatus")
+	public ResponseEntity<String> updateLoanStatus(final @RequestBody LoanDetails loanDetails) {
+		loanDao.updateLoanStatus(loanDetails.getLoanStatus(), loanDetails.getId());
+		return ResponseEntity.ok("Loan Status Updated Successfully");
+	}
 }
