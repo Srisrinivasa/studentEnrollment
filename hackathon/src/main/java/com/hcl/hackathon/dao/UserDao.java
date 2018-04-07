@@ -48,15 +48,14 @@ public class UserDao {
 	 * @throws ParseException
 	 */
 	public void saveUserDetails(UserDetails user) throws ParseException{  
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
-		java.util.Date dateStr = formatter.parse(user.getDob());
-		java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
-	    String userDetailsData="insert into t_userdetails values(null,'"+user.getFirstName()+"','"+user.getMiddleName()+"','"+user.getLastName()+"','"+
+		final java.util.Date dateStr = new SimpleDateFormat("yyyy-MM-dd").parse(user.getDob());
+		final java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+	    final String userDetailsData="insert into t_userdetails values(null,'"+user.getFirstName()+"','"+user.getMiddleName()+"','"+user.getLastName()+"','"+
 	     user.getAddressLine1()+"','"+ user.getAddressLine2()+"','"+ user.getCity()+"','" +user.getState()+"','" +user.getPincode()+
 	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +user.getKYCStatus()+"');";
 	    jdbcTemplate.update(userDetailsData);  //inserting registration data in user details
 	    System.out.println("userdetails===>"+userDetailsData);//TODO to be removed
-	    String loginDetailsData="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
+	    final String loginDetailsData="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
 	    System.out.println("logindetailsdata===>"+loginDetailsData);//TODO to be removed
 	    jdbcTemplate.update(loginDetailsData);  //inserting login data
 	}  
