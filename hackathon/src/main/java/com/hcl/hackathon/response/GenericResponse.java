@@ -1,5 +1,10 @@
 package com.hcl.hackathon.response;
 
+/**
+ * 
+ * @author nitin
+ *
+ */
 public class GenericResponse {
 	private String message;
 	private String role;

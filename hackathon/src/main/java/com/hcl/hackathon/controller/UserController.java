@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.hackathon.dao.UserDao;
-import com.hcl.hackathon.dao.UserDaoImpl;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 import com.hcl.hackathon.response.GenericResponse;
 
+/**
+ * Controller for user related services
+ * @author admin
+ *
+ */
 @CrossOrigin
 @RestController
 @RequestMapping(value="/user")

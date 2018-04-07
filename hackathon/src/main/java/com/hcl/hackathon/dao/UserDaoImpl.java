@@ -88,7 +88,7 @@ public class UserDaoImpl implements UserDao{
 	public UserDetails findByUserId(String emailId){
 		String query="select * from t_userdetails ud where ud.emailId = ?";
 		List<UserDetails> userDetails = jdbcTemplate.query(query, new Object[] {emailId}, new UserRowMapper()); 
-		if(userDetails!=null){
+		if(userDetails!=null && !userDetails.isEmpty()){
 			 return userDetails.get(0);
 		}else{
 			return null;

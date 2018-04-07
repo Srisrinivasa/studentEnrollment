@@ -6,6 +6,11 @@ import java.util.List;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 
+/**
+ * apis for user related 
+ * @author admin
+ *
+ */
 public interface UserDao {
 
 	public String login(Login login);
