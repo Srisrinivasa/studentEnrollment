@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.hackathon.dao.UserDao;
+import com.hcl.hackathon.dao.UserDaoImpl;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 import com.hcl.hackathon.response.GenericResponse;
@@ -44,6 +45,17 @@ public class UserController {
 	@GetMapping("/pendingKycUsers")
 	public List<UserDetails> pendingKYCUser() {
 		return userDao.findPendingKycUsers();
+	}
+	
+	/**
+	 * 
+	 * @param userDetails
+	 * @return
+	 */
+	@PostMapping("/updateKycUsers")
+	public ResponseEntity<String> updateKYCStatus(@RequestBody UserDetails userDetails) {
+		userDao.updateKycStatus(userDetails.getKYCStatus(), userDetails.getId());
+		return ResponseEntity.ok("KYC status updated successfully");
 	}
 	
 	/**
