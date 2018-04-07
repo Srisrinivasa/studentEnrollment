@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 import com.hcl.hackathon.domain.Login;
 import com.hcl.hackathon.domain.UserDetails;
 
+/**
+ * Dao class to perform Dao operations
+ * @author admin
+ *
+ */
 @Component
 public class UserDao {
 	
@@ -21,6 +26,11 @@ public class UserDao {
 		this.jdbcTemplate=jdbcTemplate;
 	}
 	
+	/**
+	 * Method to get login data
+	 * @param login
+	 * @return
+	 */
 	public String login(Login login){  
 		String query="select u.role from t_user u where u.userId = ? and u.password = ?";
 	    //return jdbcTemplate.queryForObject(query, new Object[] {login.getUserId(), login.getPassword()}, String.class);
@@ -32,14 +42,25 @@ public class UserDao {
 	    }
 	}
 
-	public int saveUserDetails(UserDetails user) throws ParseException{  
+	/**
+	 * Method to save user data
+	 * @param user
+	 * @throws ParseException
+	 */
+	public void saveUserDetails(UserDetails user) throws ParseException{  
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
 		java.util.Date dateStr = formatter.parse(user.getDob());
 		java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
-	    String query="insert into t_userdetails values(null,'"+user.getFirstName()+"','"+user.getMiddleName()+"','"+user.getLastName()+"','"+
+	    String userDetailsData="insert into t_userdetails values(null,'"+user.getFirstName()+"','"+user.getMiddleName()+"','"+user.getLastName()+"','"+
 	     user.getAddressLine1()+"','"+ user.getAddressLine2()+"','"+ user.getCity()+"','" +user.getState()+"','" +user.getPincode()+
-	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +user.getPassword()+"');";
+	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +user.getKYCStatus()+"');";
+	    jdbcTemplate.update(userDetailsData);  //inserting registration data in user details
+	  
+	    String query="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
 	    System.out.println("===>"+query);//TODO to be removed
-	    return jdbcTemplate.update(query);  
+	    jdbcTemplate.update(userDetailsData);  //inserting login data
 	}  
+	
+	
+	
 }
