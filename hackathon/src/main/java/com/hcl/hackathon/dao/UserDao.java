@@ -67,7 +67,7 @@ public class UserDao {
 	 */
 	public List<UserDetails> findPendingKycUsers(){  
 		String query="select * from t_userdetails ud where ud.KYCStatus = ?";
-	    return jdbcTemplate.query(query, new Object[] {"P"}, new UserRowMapper()); 
+	    return jdbcTemplate.query(query, new Object[] {"PENDING"}, new UserRowMapper()); 
 	}
 	
 }
