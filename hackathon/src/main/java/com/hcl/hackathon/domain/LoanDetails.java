@@ -93,7 +93,6 @@ public class LoanDetails {
 		return loanApplyDate;
 	}
 
-	@JsonIgnore
 	public void setLoanApplyDate(Date loanApplyDate) {
 		this.loanApplyDate = loanApplyDate;
 	}
