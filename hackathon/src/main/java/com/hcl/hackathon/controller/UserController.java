@@ -67,7 +67,7 @@ public class UserController {
 	}
 	
 	/**
-	 * Method is used to
+	 * Method is used to register User
 	 * @param user
 	 * @return ResponseEntity
 	 * @throws ParseException

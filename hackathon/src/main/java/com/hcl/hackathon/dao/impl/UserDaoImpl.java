@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDao{
 		final java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
 	    final String userDetailsData="insert into t_userdetails values(null,'"+user.getFirstName()+"','"+user.getMiddleName()+"','"+user.getLastName()+"','"+
 	     user.getAddressLine1()+"','"+ user.getAddressLine2()+"','"+ user.getCity()+"','" +user.getState()+"','" +user.getPincode()+
-	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +user.getKycStatus()+"');";
+	     "','" +user.getContactNo()+"','"+dateDB+"','" +user.getEmailId()+"','" +user.getGender()+"','" +Constants.PENDING+"');";
 	    jdbcTemplate.update(userDetailsData);  //inserting registration data in user details
 	    final String loginDetailsData="insert into t_user values('"+user.getEmailId()+"','"+user.getPassword()+"','USER');";
 	    jdbcTemplate.update(loginDetailsData);  //inserting login data
