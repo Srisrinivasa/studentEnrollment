@@ -10,6 +10,23 @@ import com.hcl.hackathon.domain.LoanDetails;
  */
 public interface LoanDao {
 	
-	public void saveLoanDetails(LoanDetails loanDetails);
-	public List<LoanDetails> findLoanDetailsByUserId(String userId);
+	/**
+	 * 
+	 * @param loanDetails
+	 */
+	void saveLoanDetails(LoanDetails loanDetails);
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return List<LoanDetails>
+	 */
+	List<LoanDetails> findLoanDetailsByUserId(String userId);
+	
+	/**
+	 * 
+	 * @param loanStatus
+	 * @param loanId
+	 */
+	void updateLoanStatus(String loanStatus, Long loanId);
 }

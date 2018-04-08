@@ -43,7 +43,7 @@ public class UserController {
 	@PostMapping()
 	public GenericResponse login(@RequestBody Login login) {
 		String role = userDao.login(login);
-		return new GenericResponse(role != null ? "User Login Successful" : "User Login Failed", role);
+		return new GenericResponse(role != null && !role.isEmpty() ? "User Login Successful" : "User Login Failed", role);
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class UserController {
 	@PostMapping("/updateKycStatus")
 	public ResponseEntity<String> updateKYCStatus(final @RequestBody UserDetails userDetails) {
 		userDao.updateKycStatus(userDetails.getKycStatus(), userDetails.getId());
-		return ResponseEntity.ok("KYC status updated successfully");
+		return ResponseEntity.ok("KYC Status Updated Successfully");
 	}
 	
 	/**
