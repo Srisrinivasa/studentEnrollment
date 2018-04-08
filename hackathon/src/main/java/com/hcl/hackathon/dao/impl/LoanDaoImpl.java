@@ -34,7 +34,7 @@ public class LoanDaoImpl implements LoanDao{
 	public void saveLoanDetails(LoanDetails loanDetails) {
 		 final java.sql.Date dateDB = new java.sql.Date(new Date().getTime());
 		 final String loanDetailsData="insert into t_loan_details values(null,'"+loanDetails.getUserId()+"','"+loanDetails.getType()+"','"+loanDetails.getInterestRate()+"','"+
-			     loanDetails.getTenure()+"','"+ loanDetails.getAmount()+"','"+ loanDetails.getUniversityName()+"','" +Constants.PENDING+"','"+dateDB+"');";
+			     loanDetails.getTenure()+"','"+ loanDetails.getAmount()+"','"+ loanDetails.getUniversityName()+"','" +Constants.PENDING+"','"+dateDB+"','"+loanDetails.getEmi()+"');";
 	     jdbcTemplate.update(loanDetailsData);  //inserting loan data in t_loan_details		
 	}
 
