@@ -65,4 +65,5 @@ public class UserControllerTest {
 		Assert.assertEquals(null,userControllerMock.login(loginMock).getRole());
 		Assert.assertEquals("User Login Failed", userControllerMock.login(loginMock).getMessage());
 	}
+
 }
