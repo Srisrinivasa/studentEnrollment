@@ -6,8 +6,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid no-padding">
-        <NavBar />
-        {this.props.children}
+        <div className="row no-margin">
+          <Header titleName='Loan Management System' />
+          {/*<Login />*/}
+        </div>
+        <div className="row no-margin">
+          <div className="col-md-6"></div>
+          <div className="col-md-6"></div>
+        </div>
       </div>
     );
   }
