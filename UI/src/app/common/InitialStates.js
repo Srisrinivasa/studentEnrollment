@@ -1,7 +1,8 @@
-export const studentEnroll = {
+export const userEnroll = {
   firstName: '',
   middleName: '',
   lastName: '',
+  password: '',
   fatherName: '',
   dob: '',
   gender: 'male',
@@ -15,3 +16,24 @@ export const studentEnroll = {
   remarks: '',
   pending: false,
 };
+
+export const login = {
+  userId: '',
+  password: '',
+  role: '',
+}
+
+export const calculator = {
+  amount: '',
+}
+export const loanDetails = {
+  amount: '',
+  tenure: '',
+  interestRate: '',
+  loansList: [],
+  university:'',
+}
+export const admin = {
+  loanDetails: [],
+  userDetails: [],
+}

@@ -1,0 +1,21 @@
+.KYCApprovals-section .loanDisbursement-box-style{
+    background-color: white;
+    border: 1px solid #bcbcbc;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px;
+    margin-top: 145px;
+    padding: 10px
+}
+.KYCApprovals-section .loanDisbursement-header{
+    text-decoration: underline;
+}
+
+.KYCApprovals-section output {
+    display: inline-block;
+    position: absolute;
+    padding: 1px 0px 0px 5px;
+    font-size: 15px;
+}
+.KYCApprovals-section table tr td h1 {
+    color: #bcbcbc
+}

@@ -8,8 +8,22 @@ const NavBar = (props) => {
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid">
                     <div className="navbar-header" id="navBarHeading">
-                        <span>Student Enrollment</span>
+                        <span>DEUTSCHE BANK</span>
                     </div>
+                    <ul className="nav navbar-nav">
+                        <li><IndexLink to="/userHome" activeClassName="active" >Apply Education Loan</IndexLink></li>
+                        <li>
+                            <Link to="/loanStatus"
+                                activeClassName="active">
+                               Loan Disbursement</Link>
+                        </li>
+                    </ul>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li><Link to="#">
+                            <span className="glyphicon glyphicon-log-out" />
+                            <span> Logout</span>
+                        </Link></li>
+                    </ul>
                 </div>
             </nav>
         </section>;

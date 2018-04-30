@@ -1,11 +1,11 @@
 {
-  "name": "course-tracker",
+  "name": "loan-management",
   "version": "1.0.0",
   "description": "React application to track course status.",
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
+    "build": "webpack -d && copy src\\index.html dist\\index.html && webpack-dev-server --public 10.117.189.197:8080 --host 0.0.0.0 --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && copy src\\index.html dist\\index.html"
   },
   "keywords": [

@@ -1,0 +1,8 @@
+.container-fluid #header-section {
+    height: 10%;
+    background-color: #27394f;
+    color: #fff;
+}
+.body-section {
+    height: 80%;
+}
